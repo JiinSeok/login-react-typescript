@@ -3,6 +3,7 @@ import './App.css';
 import Button from './components/Button';
 import Input from './components/Input';
 import Label from './components/Label';
+import Alert from './components/Alert';
 import { useSetLocale, useTranslate } from './translate';
 
 function App() {
@@ -36,45 +37,53 @@ function App() {
   }
 
   return (
-    <form className="login" ref={formRef as any}>
-      <h1 className="login-title">{t('signin')}</h1>
-      <Label>{t('username')}</Label>
-      <Input
-        id="username"
-        name="username"
-        type="text"
-        placeholder={t('email or phone number')}
-        value={values.username}
-        onChange={handleChange}
-      />
-      <Label>{t('password')}</Label>
-      <Input
-        id="password"
-        name="password"
-        type="password"
-        placeholder={t('password')}
-        value={values.password}
-        onChange={handleChange}
-      />
-      <div className="login-forgot">
-        <a className="login-forgot-link" href="#login">
-          {t('forgot your password?')}
-        </a>
-      </div>
-      <Button id="submit" onClick={handleClick}>
-        {t('signin')}
-      </Button>
-      <div className="login-signup">
-        {t('new user?')}{' '}
-        <a className="login-signup-link" href="#signup">
-          {t('signup')}
-        </a>
-      </div>
-      <div className="locale">
-        <span onClick={() => setLocale('ko')}>한국어</span> |{' '}
-        <span onClick={() => setLocale('en')}>English</span>
-      </div>
-    </form>
+    <>
+        <form className="login" ref={formRef as any}>
+          <h1 className="login-title">{t('signin')}</h1>
+          <Label>{t('username')}</Label>
+          <Input
+            id="username"
+            name="username"
+            type="text"
+            placeholder={t('email or phone number')}
+            value={values.username}
+            onChange={handleChange}
+          />
+          <Label>{t('password')}</Label>
+          <Input
+            id="password"
+            name="password"
+            type="password"
+            placeholder={t('password')}
+            value={values.password}
+            onChange={handleChange}
+          />
+          <div className="login-forgot">
+            <a className="login-forgot-link" href="#login">
+              {t('forgot your password?')}
+            </a>
+          </div>
+          <Button id="submit" onClick={handleClick}>
+            {t('signin')}
+          </Button>
+          <div className="login-signup">
+            {t('new user?')}{' '}
+            <a className="login-signup-link" href="#signup">
+              {t('signup')}
+            </a>
+          </div>
+          <div className="locale">
+            <span onClick={() => setLocale('ko')}>한국어</span> |{' '}
+            <span onClick={() => setLocale('en')}>English</span>
+          </div>
+        </form>
+        <Alert level="info">
+            안내 메시지 예시입니다.
+        </Alert>
+        <Alert level="warn">
+            경고 메시지 예시입니다.
+        </Alert>
+    </>
   );
 }
 
