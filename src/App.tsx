@@ -7,16 +7,19 @@ import Alert from './components/Alert';
 import { useSetLocale, useTranslate } from './translate';
 
 function App() {
-  const [values, setValues] = useState({
+  const [values, setValues] = useState<{
+    username: string; // 타입 추론 아닌 타입 명시(제네릭)
+    password: string;
+  }>({
     username: '',
     password: '',
   });
-  const formRef = useRef();
+  const formRef = useRef<HTMLFormElement>(null); // 제네릭으로 타입 명시(제네릭)
   const t = useTranslate();
   const setLocale = useSetLocale();
 
   useEffect(() => {
-    const form: any = formRef.current;
+    const form = formRef.current;
     if (form) form['username'].focus();
   }, []);
 
@@ -38,7 +41,7 @@ function App() {
 
   return (
     <>
-        <form className="login" ref={formRef as any}>
+        <form className="login" ref={formRef}>
           <h1 className="login-title">{t('signin')}</h1>
           <Label>{t('username')}</Label>
           <Input
