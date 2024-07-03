@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import {ChangeEvent, MouseEvent, useEffect, useRef, useState} from 'react';
 import './App.css';
 import Button from './components/Button';
 import Input from './components/Input';
@@ -23,7 +23,7 @@ function App() {
     if (form) form['username'].focus();
   }, []);
 
-  function handleChange(e: any) {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
     const nextValues = {
       ...values,
@@ -32,7 +32,7 @@ function App() {
     setValues(nextValues);
   }
 
-  function handleClick(e: any) {
+  function handleClick(e: MouseEvent) {
     e.preventDefault();
 
     const message = `${values.username}님 환영합니다`;
